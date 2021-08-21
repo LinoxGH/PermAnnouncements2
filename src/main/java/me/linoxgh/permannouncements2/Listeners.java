@@ -5,7 +5,6 @@ import java.util.Set;
 
 import me.linoxgh.permannouncements2.Data.AnnouncementStorage;
 import me.linoxgh.permannouncements2.Data.Message;
-import me.linoxgh.permannouncements2.Data.MessageGroup;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
