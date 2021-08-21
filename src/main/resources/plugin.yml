@@ -1,0 +1,14 @@
+name: PermAnnouncements2
+version: ${project.version}
+main: me.linoxgh.permannouncements2.PermAnnouncements2
+api-version: 1.16
+authors: [ LinoxGH ]
+description: Player-specific announcements based on permissions.
+
+commands:
+  permannouncements2:
+    description: "Main command for PermAnnouncements2 plugin."
+    usage: "/permannouncements2 help"
+    permission: permannouncements2.main
+    permission-message: "§4You do not have enough permission to use this command."
+    aliases: [ permannouncements, announcements, pa ]

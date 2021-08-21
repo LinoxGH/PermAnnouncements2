@@ -1,0 +1,12 @@
+# The seconds to pass between 2 announcements.
+interval: 30
+
+prefix:
+  enabled: true
+  text: "&9[&e!&9]"
+
+announcements:
+  thanks:
+    message: "&bThanks for using the plugin!"
+    permission: "announcements.thanks"
+    weight: 10
