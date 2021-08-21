@@ -23,7 +23,7 @@ public class MainCommand implements CommandExecutor {
         this.help = new HelpCommand();
         this.list = new ListCommand(announcements);
         this.info = new InfoCommand(configs);
-        this.config = new ConfigCommand(configs);
+        this.config = new ConfigCommand(plugin, configs);
         this.add = new AddCommand(announcements);
         this.remove = new RemoveCommand(announcements);
         this.edit = new EditCommand(announcements);

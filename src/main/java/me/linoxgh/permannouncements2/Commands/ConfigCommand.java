@@ -1,13 +1,16 @@
 package me.linoxgh.permannouncements2.Commands;
 
 import me.linoxgh.permannouncements2.Data.ConfigStorage;
+import me.linoxgh.permannouncements2.PermAnnouncements2;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 
 public class ConfigCommand extends Command {
+    private final PermAnnouncements2 plugin;
     private final ConfigStorage configs;
 
-    ConfigCommand(@NotNull ConfigStorage configs) {
+    ConfigCommand(@NotNull PermAnnouncements2 plugin, @NotNull ConfigStorage configs) {
+        this.plugin = plugin;
         this.configs = configs;
     }
 
@@ -26,6 +29,7 @@ public class ConfigCommand extends Command {
                     try {
                         int interval = Integer.parseInt(args[2]);
                         configs.setInterval(interval);
+                        plugin.reset();
                         sender.sendMessage("§aSuccessfully changed the interval.");
                         return true;
                     } catch (NumberFormatException ignored) {
@@ -38,16 +42,19 @@ public class ConfigCommand extends Command {
             case "prefix":
                 if (args[1].equals("set")) {
                     configs.setPrefix(args[2]);
+                    plugin.reset();
                     sender.sendMessage("§aSuccessfully changed the prefix.");
                     return true;
 
                 } else if (args[1].equals("enable")) {
                     if (args[2].equalsIgnoreCase("true")) {
                         configs.setPrefixEnabled(true);
+                        plugin.reset();
                         sender.sendMessage("§aSuccessfully enabled prefixes.");
                         return true;
                     } else if (args[2].equalsIgnoreCase("false")) {
                         configs.setPrefixEnabled(false);
+                        plugin.reset();
                         sender.sendMessage("§aSuccessfully disabled prefixes.");
                         return true;
                     }

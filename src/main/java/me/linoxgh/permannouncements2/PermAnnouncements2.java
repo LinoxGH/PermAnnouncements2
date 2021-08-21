@@ -4,7 +4,6 @@ import me.linoxgh.permannouncements2.Commands.MainCommand;
 import me.linoxgh.permannouncements2.Data.AnnouncementStorage;
 import me.linoxgh.permannouncements2.Data.ConfigStorage;
 import me.linoxgh.permannouncements2.IO.IOManager;
-import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class PermAnnouncements2 extends JavaPlugin {
@@ -28,7 +27,7 @@ public final class PermAnnouncements2 extends JavaPlugin {
             return;
         }
 
-        getCommand("permannouncements2").setExecutor(new MainCommand(announcements, configs));
+        getCommand("permannouncements2").setExecutor(new MainCommand(this, announcements, configs));
         new Listeners(this, announcements);
         task = new AnnouncementTask(this, announcements, configs);
     }
