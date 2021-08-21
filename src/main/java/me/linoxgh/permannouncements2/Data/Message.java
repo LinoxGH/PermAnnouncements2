@@ -38,8 +38,4 @@ public class Message {
     public void setWeight(int weight) {
         this.weight = weight;
     }
-
-    public boolean equals(@NotNull String message) {
-        return this.message.equals(message) || message.equals(name);
-    }
 }

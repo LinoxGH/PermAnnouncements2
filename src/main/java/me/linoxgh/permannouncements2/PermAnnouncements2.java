@@ -30,6 +30,7 @@ public final class PermAnnouncements2 extends JavaPlugin {
 
     @Override
     public void onDisable() {
-
+        ioManager.saveConfig();
+        ioManager.saveAnnouncements();
     }
 }

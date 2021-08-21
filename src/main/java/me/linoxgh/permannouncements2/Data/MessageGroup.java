@@ -30,7 +30,7 @@ public class MessageGroup {
     public void addMessage(int weight, @NotNull Message message) {
         messages.put((messages.isEmpty() ? 0 : messages.lastKey()) + weight, message);
     }
-    public void removeMessage(@NotNull String message) {
+    public void removeMessage(@NotNull Message message) {
         TreeMap<Integer, Message> newMap = new TreeMap<>();
 
         int key = 0;

@@ -47,6 +47,18 @@ public class IOManager {
     }
 
     public void saveAnnouncements() {
+        ConfigurationSection cfg = config.getConfigurationSection("announcements");
+        if (cfg == null) {
+            cfg = config.createSection("announcements");
+        }
 
+        for (Message message : announcementStorage.getMessages()) {
+            String key = message.getName();
+            if (!cfg.contains(message.getName())) cfg = cfg.createSection(key);
+
+            cfg.set(key + ".message", message.getMessage());
+            cfg.set(key + ".permission", message.getPermission());
+            cfg.set(key + ".weight", message.getWeight());
+        }
     }
 }
