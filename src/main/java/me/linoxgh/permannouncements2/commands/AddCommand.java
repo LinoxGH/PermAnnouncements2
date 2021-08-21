@@ -1,15 +1,18 @@
-package me.linoxgh.permannouncements2.Commands;
+package me.linoxgh.permannouncements2.commands;
 
-import me.linoxgh.permannouncements2.Data.AnnouncementStorage;
-import me.linoxgh.permannouncements2.Data.Message;
+import me.linoxgh.permannouncements2.PermAnnouncements2;
+import me.linoxgh.permannouncements2.data.AnnouncementStorage;
+import me.linoxgh.permannouncements2.data.Message;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 
 public class AddCommand extends Command {
+    private final PermAnnouncements2 plugin;
     private final AnnouncementStorage announcements;
 
-    AddCommand(@NotNull AnnouncementStorage announcements) {
+    AddCommand(@NotNull PermAnnouncements2 plugin, @NotNull AnnouncementStorage announcements) {
+        this.plugin = plugin;
         this.announcements = announcements;
     }
 
@@ -38,12 +41,13 @@ public class AddCommand extends Command {
 
         StringBuilder builder = new StringBuilder();
         for (int i = 3; i < args.length; i++) {
-            builder.append(ChatColor.translateAlternateColorCodes('&', args[i]));
+            builder.append(args[i]);
             if (i != args.length - 1) builder.append(" ");
         }
 
-        Message message = new Message(args[1], builder.toString(), null, weight);
+        Message message = new Message(args[1], ChatColor.translateAlternateColorCodes('&', builder.toString()), null, weight);
         announcements.addMessage(message);
+        plugin.reset();
         sender.sendMessage("§aSuccessfully added an announcement.");
         return true;
     }

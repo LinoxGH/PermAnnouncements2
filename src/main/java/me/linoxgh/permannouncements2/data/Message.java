@@ -1,4 +1,4 @@
-package me.linoxgh.permannouncements2.Data;
+package me.linoxgh.permannouncements2.data;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

@@ -1,4 +1,4 @@
-package me.linoxgh.permannouncements2.Commands;
+package me.linoxgh.permannouncements2.commands;
 
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;

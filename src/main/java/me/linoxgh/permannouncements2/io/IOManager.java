@@ -1,11 +1,11 @@
-package me.linoxgh.permannouncements2.IO;
+package me.linoxgh.permannouncements2.io;
 
 import java.io.File;
 import java.io.IOException;
 
-import me.linoxgh.permannouncements2.Data.AnnouncementStorage;
-import me.linoxgh.permannouncements2.Data.ConfigStorage;
-import me.linoxgh.permannouncements2.Data.Message;
+import me.linoxgh.permannouncements2.data.AnnouncementStorage;
+import me.linoxgh.permannouncements2.data.ConfigStorage;
+import me.linoxgh.permannouncements2.data.Message;
 import me.linoxgh.permannouncements2.PermAnnouncements2;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
@@ -72,7 +72,7 @@ public class IOManager {
         ConfigurationSection cfg = config.createSection("announcements");
         for (Message message : announcementStorage.getMessages()) {
             String key = message.getName();
-            if (!cfg.contains(message.getName())) cfg = cfg.createSection(key);
+            if (!cfg.contains(message.getName())) cfg.createSection(key);
 
             cfg.set(key + ".message", message.getMessage());
             cfg.set(key + ".permission", message.getPermission());

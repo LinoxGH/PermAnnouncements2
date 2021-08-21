@@ -1,14 +1,17 @@
-package me.linoxgh.permannouncements2.Commands;
+package me.linoxgh.permannouncements2.commands;
 
-import me.linoxgh.permannouncements2.Data.AnnouncementStorage;
-import me.linoxgh.permannouncements2.Data.Message;
+import me.linoxgh.permannouncements2.PermAnnouncements2;
+import me.linoxgh.permannouncements2.data.AnnouncementStorage;
+import me.linoxgh.permannouncements2.data.Message;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 
 public class RemoveCommand extends Command {
+    private final PermAnnouncements2 plugin;
     private final AnnouncementStorage announcements;
 
-    RemoveCommand(@NotNull AnnouncementStorage announcements) {
+    RemoveCommand(@NotNull PermAnnouncements2 plugin, @NotNull AnnouncementStorage announcements) {
+        this.plugin = plugin;
         this.announcements = announcements;
     }
 
@@ -26,6 +29,7 @@ public class RemoveCommand extends Command {
         }
 
         announcements.removeMessage(announcement);
+        plugin.reset();
         sender.sendMessage("§aSuccessfully removed the announcement.");
         return true;
     }

@@ -1,4 +1,4 @@
-package me.linoxgh.permannouncements2.Data;
+package me.linoxgh.permannouncements2.data;
 
 import java.util.HashMap;
 import java.util.HashSet;

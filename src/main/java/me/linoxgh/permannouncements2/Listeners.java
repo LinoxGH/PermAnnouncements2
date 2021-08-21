@@ -3,8 +3,8 @@ package me.linoxgh.permannouncements2;
 import java.util.HashSet;
 import java.util.Set;
 
-import me.linoxgh.permannouncements2.Data.AnnouncementStorage;
-import me.linoxgh.permannouncements2.Data.Message;
+import me.linoxgh.permannouncements2.data.AnnouncementStorage;
+import me.linoxgh.permannouncements2.data.Message;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

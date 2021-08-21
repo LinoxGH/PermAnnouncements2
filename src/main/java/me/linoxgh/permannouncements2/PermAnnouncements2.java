@@ -1,20 +1,21 @@
 package me.linoxgh.permannouncements2;
 
-import me.linoxgh.permannouncements2.Commands.MainCommand;
-import me.linoxgh.permannouncements2.Data.AnnouncementStorage;
-import me.linoxgh.permannouncements2.Data.ConfigStorage;
-import me.linoxgh.permannouncements2.IO.IOManager;
+import me.linoxgh.permannouncements2.commands.MainCommand;
+import me.linoxgh.permannouncements2.data.AnnouncementStorage;
+import me.linoxgh.permannouncements2.data.ConfigStorage;
+import me.linoxgh.permannouncements2.io.IOManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class PermAnnouncements2 extends JavaPlugin {
-    private final AnnouncementStorage announcements = new AnnouncementStorage();
-    private final ConfigStorage configs = new ConfigStorage();
     private AnnouncementTask task;
     private IOManager ioManager;
 
     @Override
     public void onEnable() {
         saveDefaultConfig();
+
+        AnnouncementStorage announcements = new AnnouncementStorage();
+        ConfigStorage configs = new ConfigStorage();
 
         ioManager = new IOManager(this, configs, announcements);
         ioManager.loadConfig();

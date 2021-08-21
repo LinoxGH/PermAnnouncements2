@@ -1,4 +1,4 @@
-package me.linoxgh.permannouncements2.Commands;
+package me.linoxgh.permannouncements2.commands;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -107,8 +107,8 @@ public class HelpCommand extends Command {
 
         for (int i = 0; i < pages.size(); i++) {
             List<String> page = pages.get(i);
-            page.add(0, "§e.*.-----_-----{ §3PermAnnouncements 2 §e}-----_-----.*.");
-            page.add("§e.*.-----_-----{ §3Help " + (i + 1) + " §e}-----_-----.*.");
+            page.add(0, "§e.*.-----{ §3PermAnnouncements 2 §e}-----.*.");
+            page.add("§e.*.-----_-----{ §3Help - " + (i + 1) + " §e}-----_-----.*.");
             result.add(page.toArray(new String[0]));
         }
         return result;

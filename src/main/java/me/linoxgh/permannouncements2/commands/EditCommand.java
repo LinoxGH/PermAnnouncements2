@@ -1,15 +1,18 @@
-package me.linoxgh.permannouncements2.Commands;
+package me.linoxgh.permannouncements2.commands;
 
-import me.linoxgh.permannouncements2.Data.AnnouncementStorage;
-import me.linoxgh.permannouncements2.Data.Message;
+import me.linoxgh.permannouncements2.PermAnnouncements2;
+import me.linoxgh.permannouncements2.data.AnnouncementStorage;
+import me.linoxgh.permannouncements2.data.Message;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 
 public class EditCommand extends Command {
+    private final PermAnnouncements2 plugin;
     private final AnnouncementStorage announcements;
 
-    EditCommand(@NotNull AnnouncementStorage announcements) {
+    EditCommand(@NotNull PermAnnouncements2 plugin, @NotNull AnnouncementStorage announcements) {
+        this.plugin = plugin;
         this.announcements = announcements;
     }
 
@@ -36,6 +39,7 @@ public class EditCommand extends Command {
                     if (i != args.length - 1) builder.append(" ");
                 }
                 announcement.setMessage(builder.toString());
+                plugin.reset();
                 sender.sendMessage("§aSuccessfully changed the announcement.");
                 return true;
 
@@ -44,6 +48,7 @@ public class EditCommand extends Command {
                     int weight = Integer.parseInt(args[3]);
                     announcement.setWeight(weight);
                     sender.sendMessage("§aSuccessfully changed the weight.");
+                    plugin.reset();
                     return true;
                 } catch (NumberFormatException ignored) {
                     sender.sendMessage("§4Please enter a valid weight.");
@@ -52,6 +57,7 @@ public class EditCommand extends Command {
 
             case "permission":
                 announcement.setPermission(args[3].equalsIgnoreCase("null") ? null : args[3]);
+                plugin.reset();
                 sender.sendMessage("§aSuccessfully changed permission.");
                 return true;
 

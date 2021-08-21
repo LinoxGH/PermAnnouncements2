@@ -1,7 +1,7 @@
-package me.linoxgh.permannouncements2.Commands;
+package me.linoxgh.permannouncements2.commands;
 
-import me.linoxgh.permannouncements2.Data.AnnouncementStorage;
-import me.linoxgh.permannouncements2.Data.ConfigStorage;
+import me.linoxgh.permannouncements2.data.AnnouncementStorage;
+import me.linoxgh.permannouncements2.data.ConfigStorage;
 import me.linoxgh.permannouncements2.PermAnnouncements2;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -24,9 +24,9 @@ public class MainCommand implements CommandExecutor {
         this.list = new ListCommand(announcements);
         this.info = new InfoCommand(configs);
         this.config = new ConfigCommand(plugin, configs);
-        this.add = new AddCommand(announcements);
-        this.remove = new RemoveCommand(announcements);
-        this.edit = new EditCommand(announcements);
+        this.add = new AddCommand(plugin, announcements);
+        this.remove = new RemoveCommand(plugin, announcements);
+        this.edit = new EditCommand(plugin, announcements);
         this.perm = new PermCommand(plugin, announcements);
     }
 

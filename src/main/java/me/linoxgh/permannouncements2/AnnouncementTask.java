@@ -2,9 +2,9 @@ package me.linoxgh.permannouncements2;
 
 import java.util.UUID;
 
-import me.linoxgh.permannouncements2.Data.AnnouncementStorage;
-import me.linoxgh.permannouncements2.Data.ConfigStorage;
-import me.linoxgh.permannouncements2.Data.MessageGroup;
+import me.linoxgh.permannouncements2.data.AnnouncementStorage;
+import me.linoxgh.permannouncements2.data.ConfigStorage;
+import me.linoxgh.permannouncements2.data.MessageGroup;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -28,12 +28,14 @@ public class AnnouncementTask implements Runnable {
 
         for (MessageGroup group : announcements.getAnnouncements().values()) {
             for (UUID player : group.getPlayers()) {
+                String message = group.getRandomMessage();
+                if (message == null) continue;
                 Player p = Bukkit.getPlayer(player);
                 if (p == null) {
                     group.removePlayer(player);
                     continue;
                 }
-                p.sendMessage((prefixEnabled ? prefix + " " : "") + group.getRandomMessage());
+                p.sendMessage((prefixEnabled ? prefix + " §f" : "§f") + group.getRandomMessage());
             }
         }
     }

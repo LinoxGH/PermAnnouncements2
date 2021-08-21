@@ -1,6 +1,6 @@
-package me.linoxgh.permannouncements2.Commands;
+package me.linoxgh.permannouncements2.commands;
 
-import me.linoxgh.permannouncements2.Data.ConfigStorage;
+import me.linoxgh.permannouncements2.data.ConfigStorage;
 import me.linoxgh.permannouncements2.PermAnnouncements2;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
