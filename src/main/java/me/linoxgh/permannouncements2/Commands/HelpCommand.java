@@ -55,7 +55,7 @@ public class HelpCommand extends Command {
             messages.add("§6/pa2 prefix set §9<prefix>");
             messages.add("§e- §aChanges the prefix used in announcements.");
             messages.add("§6/pa2 prefix enable true|false");
-            messages.add("§e- §Enables or disables the prefix.");
+            messages.add("§e- §aEnables or disables the prefix.");
             messages.add(" ");
         }
         if (sender.hasPermission("permannouncements2.add")) {
