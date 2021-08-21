@@ -11,4 +11,38 @@ commands:
     usage: "/permannouncements2 help"
     permission: permannouncements2.main
     permission-message: "§4You do not have enough permission to use this command."
-    aliases: [ permannouncements, announcements, pa ]
+    aliases: [ permannouncements, announcements, pa2, pa ]
+
+permissions:
+  permannouncements2.admin:
+    description: "Admin permission node for all adding, removing and changing configs."
+    default: op
+    children: [ permannouncements2.info, permannouncements2.config, permannouncements2.list, permannouncements2.add, permannouncements2.remove, permannouncements2.edit ]
+  permannouncements2.info:
+    description: "Permission node responsible for viewing configs in-game."
+    default: op
+    children: [ permannouncements2.main ]
+  permannouncements2.config:
+    description: "Permission node responsible for changing configs in-game."
+    default: op
+    children: [ permannouncements2.main ]
+  permannouncements2.list:
+    description: "Permission node responsible for listing announcements."
+    default: op
+    children: [ permannouncements2.main ]
+  permannouncements2.add:
+    description: "Permission node responsible for adding announcements."
+    default: op
+    children: [ permannouncements2.main ]
+  permannouncements2.remove:
+    description: "Permission node responsible for removing announcements."
+    default: op
+    children: [ permannouncements2.main ]
+  permannouncements2.edit:
+    description: "Permission node responsible for editing announcements."
+    default: op
+    children: [ permannouncements2.main ]
+
+  permannouncements2.main:
+    description: "Main permission node for /permannouncements2 command."
+    default: op
