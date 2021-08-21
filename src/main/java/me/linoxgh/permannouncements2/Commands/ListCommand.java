@@ -23,10 +23,10 @@ public class ListCommand extends Command {
         sender.sendMessage("§e.*.-----_-----{ §3PermAnnouncements 2 §e}-----_-----.*.");
         sender.sendMessage("§9Name §e- §9Weight §e- §9Permission §e- §9Announcement");
         for (Message message : announcements.getMessages()) {
-            sender.sendMessage(Component.text(message.getName() + " §e- §f" + message.getWeight() + " §e- §f" + ((message.getPermission() == null) ? "N/A" : message.getPermission() + " §e- §f"))
+            sender.sendMessage(Component.text(message.getName() + " §e- §f" + message.getWeight() + " §e- §f" + ((message.getPermission() == null) ? "N/A" : message.getPermission()) + " §e- §f")
                     .append(Component.text("§9[Announcement]").hoverEvent(Component.text(message.getMessage())))
             );
         }
-        return false;
+        return true;
     }
 }

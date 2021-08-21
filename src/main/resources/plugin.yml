@@ -42,6 +42,10 @@ permissions:
     description: "Permission node responsible for editing announcements."
     default: op
     children: [ permannouncements2.main ]
+  permannouncements2.perm:
+    description: "Permission node responsible for giving and taking announcement permissions."
+    default: op
+    children: [ permannouncements2.main ]
 
   permannouncements2.main:
     description: "Main permission node for /permannouncements2 command."

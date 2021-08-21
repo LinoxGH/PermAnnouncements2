@@ -72,7 +72,12 @@ public class HelpCommand extends Command {
         if (sender.hasPermission("permannouncements2.edit")) {
             messages.add("§6/pa2 edit §9<name> §6announcement|weight|permission §9<value>");
             messages.add("§e- §aChanges the announcement text, the weight or the permission.");
-            messages.add("§e- §aAs permission is optional you can use §6null §a to remove permission.");
+            messages.add("§e- §aAs permission is optional you can use §6null §ato remove permission.");
+            messages.add(" ");
+        }
+        if (sender.hasPermission("permannouncements2.perm")) {
+            messages.add("§6/pa2 perm §9<name> §6give|take §9<player>");
+            messages.add("§e- §aGives or takes the announcement permission from the player.");
             messages.add(" ");
         }
 
