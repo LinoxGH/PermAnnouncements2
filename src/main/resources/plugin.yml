@@ -17,7 +17,7 @@ permissions:
   permannouncements2.admin:
     description: "Admin permission node for all adding, removing and changing configs."
     default: op
-    children: [ permannouncements2.info, permannouncements2.config, permannouncements2.list, permannouncements2.add, permannouncements2.remove, permannouncements2.edit ]
+    children: [ permannouncements2.info, permannouncements2.config, permannouncements2.list, permannouncements2.add, permannouncements2.remove, permannouncements2.edit, permannouncements2.perm, permannouncements2.refresh, permannouncements2.reload ]
   permannouncements2.info:
     description: "Permission node responsible for viewing configs in-game."
     default: op
@@ -44,6 +44,14 @@ permissions:
     children: [ permannouncements2.main ]
   permannouncements2.perm:
     description: "Permission node responsible for giving and taking announcement permissions."
+    default: op
+    children: [ permannouncements2.main ]
+  permannouncements2.refresh:
+    description: "Permission node responsible for refreshing the announcement task."
+    default: op
+    children: [ permannouncements2.refresh ]
+  permannouncements2.reload:
+    description: "Permission node responsible for reloading the plugin configs and announcements."
     default: op
     children: [ permannouncements2.main ]
 

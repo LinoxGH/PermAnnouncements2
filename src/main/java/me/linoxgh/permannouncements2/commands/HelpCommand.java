@@ -80,6 +80,17 @@ public class HelpCommand extends Command {
             messages.add("§e- §aGives or takes the announcement permission from the player.");
             messages.add(" ");
         }
+        if (sender.hasPermission("permannouncements2.refresh")) {
+            messages.add("§6/pa2 refresh");
+            messages.add("§e- §aRefreshes the Announcement task.");
+            messages.add("§e- §cDebugging tool.");
+            messages.add(" ");
+        }
+        if (sender.hasPermission("permannouncements2.reload")) {
+            messages.add("§6/pa2 reload");
+            messages.add("§e- §aReloads the plugin config and announcements.");
+            messages.add(" ");
+        }
 
         List<String[]> pages = divide(messages);
         if (sender instanceof Player) {

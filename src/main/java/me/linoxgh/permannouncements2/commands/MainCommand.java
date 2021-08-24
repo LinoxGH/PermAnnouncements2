@@ -18,6 +18,8 @@ public class MainCommand implements CommandExecutor {
     private final RemoveCommand remove;
     private final EditCommand edit;
     private final PermCommand perm;
+    private final RefreshCommand refresh;
+    private final ReloadCommand reload;
 
     public MainCommand(@NotNull PermAnnouncements2 plugin, @NotNull AnnouncementStorage announcements, @NotNull ConfigStorage configs) {
         this.help = new HelpCommand();
@@ -28,6 +30,8 @@ public class MainCommand implements CommandExecutor {
         this.remove = new RemoveCommand(plugin, announcements);
         this.edit = new EditCommand(plugin, announcements);
         this.perm = new PermCommand(plugin, announcements);
+        this.refresh = new RefreshCommand(plugin);
+        this.reload = new ReloadCommand(plugin);
     }
 
     @Override
@@ -61,6 +65,12 @@ public class MainCommand implements CommandExecutor {
 
             case "perm":
                 return perm.execute(sender, args);
+
+            case "refresh":
+                return refresh.execute(sender, args);
+
+            case "reload":
+                return reload.execute(sender, args);
 
             default:
                 return false;
