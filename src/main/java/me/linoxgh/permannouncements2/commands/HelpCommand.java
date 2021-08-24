@@ -31,6 +31,8 @@ public class HelpCommand extends Command {
             }
         }
 
+        if (args.length > 1) return false;
+
         List<String> messages = new ArrayList<>();
         if (sender.hasPermission("permannouncements2.main")) {
             messages.add("§6/pa2 help §3[page]");
