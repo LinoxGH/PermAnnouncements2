@@ -1,9 +1,7 @@
 package me.linoxgh.permannouncements2.commands;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import me.linoxgh.permannouncements2.data.AnnouncementStorage;
 import me.linoxgh.permannouncements2.data.Message;
@@ -26,31 +24,21 @@ public class ListCommand extends Command {
         }
 
         if (args.length > 1) return false;
-
-        List<Set<Message>> pages = divide(announcements.getMessages());
-        return sendMessage(sender, pages, args);
+        return sendMessage(sender, announcements.getMessages(), args);
     }
 
-    private @NotNull List<Set<Message>> divide(@NotNull Set<Message> messages) {
-        List<Set<Message>> pages = new ArrayList<>();
-        Set<Message> page = new HashSet<>();
-        int counter = 0;
-        for (Message message : messages) {
-            page.add(message);
-            counter++;
-
-            if (counter == 19) {
-                pages.add(page);
-                page = new HashSet<>();
-                counter = 0;
-            }
+    private @NotNull List<Message> getPage(@NotNull List<Message> messages, int pageIndex) {
+        List<Message> page = new ArrayList<>();
+        for (int index = pageIndex * 20; index < pageIndex * 20 + 20; index++) {
+            if (index >= messages.size()) break;
+            page.add(messages.get(index));
         }
-        return pages;
+        return page;
     }
 
-    private boolean sendMessage(@NotNull CommandSender sender, @NotNull List<Set<Message>> messages, @NotNull String[] args) {
-        if (args.length == 0 || args.length == 1) {
-            sendMessage(sender, messages.get(0), 1);
+    private boolean sendMessage(@NotNull CommandSender sender, @NotNull List<Message> messages, @NotNull String[] args) {
+        if (args.length == 1) {
+            sendMessage(sender, getPage(messages, 0), 1);
             return true;
         } else {
             try {
@@ -59,10 +47,10 @@ public class ListCommand extends Command {
                     return false;
                 }
                 if (page <= 0) {
-                    sendMessage(sender, messages.get(0), 1);
+                    sendMessage(sender, getPage(messages, 0), 1);
                     return true;
                 }
-                sendMessage(sender, messages.get(page - 1), page);
+                sendMessage(sender, getPage(messages, page - 1), page);
                 return true;
             } catch (NumberFormatException ignored) {
                 return false;
@@ -70,14 +58,14 @@ public class ListCommand extends Command {
         }
     }
 
-    private void sendMessage(@NotNull CommandSender sender, @NotNull Set<Message> messages, int page) {
-        sender.sendMessage("§e.*.-----_-----{ §3PermAnnouncements 2 §e}-----_-----.*.");
+    private void sendMessage(@NotNull CommandSender sender, @NotNull List<Message> messages, int page) {
+        sender.sendMessage("§e.*.-----{ §3PermAnnouncements 2 §e}-----.*.");
         sender.sendMessage("§9Name §e- §9Weight §e- §9Permission §e- §9Announcement");
         for (Message message : messages) {
             sender.sendMessage(Component.text(message.getName() + " §e- §f" + message.getWeight() + " §e- §f" + ((message.getPermission() == null) ? "N/A" : message.getPermission()) + " §e- §f")
                     .append(Component.text("§9[Announcement]").hoverEvent(Component.text(message.getMessage())))
             );
         }
-        sender.sendMessage("§e.*.-----{ §3List - " + page + " §e}-----.*.");
+        sender.sendMessage("§e.*.-----_-----{ §3List - " + page + " §e}-----_-----.*.");
     }
 }

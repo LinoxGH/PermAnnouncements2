@@ -1,7 +1,8 @@
 package me.linoxgh.permannouncements2.data;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -11,17 +12,17 @@ import org.jetbrains.annotations.Nullable;
 
 public class AnnouncementStorage {
     private final Map<Set<String>, MessageGroup> announcements;
-    private final Set<Message> messages;
+    private final List<Message> messages;
 
     public AnnouncementStorage() {
         announcements = new HashMap<>();
-        messages = new HashSet<>();
+        messages = new ArrayList<>();
     }
 
     public @NotNull Map<Set<String>, MessageGroup> getAnnouncements() {
         return announcements;
     }
-    public @NotNull Set<Message> getMessages() {
+    public @NotNull List<Message> getMessages() {
         return messages;
     }
     public void addMessage(@NotNull Set<String> permissions, @NotNull Set<Message> messages, @NotNull UUID player) {

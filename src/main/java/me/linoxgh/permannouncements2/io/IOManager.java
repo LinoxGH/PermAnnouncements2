@@ -2,11 +2,12 @@ package me.linoxgh.permannouncements2.io;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Comparator;
 
+import me.linoxgh.permannouncements2.PermAnnouncements2;
 import me.linoxgh.permannouncements2.data.AnnouncementStorage;
 import me.linoxgh.permannouncements2.data.ConfigStorage;
 import me.linoxgh.permannouncements2.data.Message;
-import me.linoxgh.permannouncements2.PermAnnouncements2;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -43,6 +44,7 @@ public class IOManager {
 
             announcementStorage.addMessage(new Message(key, ChatColor.translateAlternateColorCodes('&', message), permission, weight));
         }
+        announcementStorage.getMessages().sort(Comparator.comparing(Message::getName));
         return true;
     }
 

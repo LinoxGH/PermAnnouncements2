@@ -56,7 +56,6 @@ public final class PermAnnouncements2 extends JavaPlugin {
 
             announcements.addMessage(permissionGroup, messages, p.getUniqueId());
         }
-
         task = new AnnouncementTask(this, announcements, configs);
     }
 
@@ -106,7 +105,6 @@ public final class PermAnnouncements2 extends JavaPlugin {
                     permissionGroup.add(message.getPermission());
                 }
             }
-
             announcements.addMessage(permissionGroup, messages, p.getUniqueId());
         }
         task.refresh(this);

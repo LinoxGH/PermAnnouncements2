@@ -1,5 +1,7 @@
 package me.linoxgh.permannouncements2.commands;
 
+import java.util.Comparator;
+
 import me.linoxgh.permannouncements2.PermAnnouncements2;
 import me.linoxgh.permannouncements2.data.AnnouncementStorage;
 import me.linoxgh.permannouncements2.data.Message;
@@ -47,6 +49,7 @@ public class AddCommand extends Command {
 
         Message message = new Message(args[1], ChatColor.translateAlternateColorCodes('&', builder.toString()), null, weight);
         announcements.addMessage(message);
+        announcements.getMessages().sort(Comparator.comparing(Message::getName));
         plugin.reset();
         sender.sendMessage("§aSuccessfully added an announcement.");
         return true;
