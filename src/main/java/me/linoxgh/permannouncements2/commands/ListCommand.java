@@ -23,7 +23,7 @@ public class ListCommand extends Command {
             return true;
         }
 
-        if (args.length > 1) return false;
+        if (args.length > 2) return false;
         return sendMessage(sender, announcements.getMessages(), args);
     }
 
